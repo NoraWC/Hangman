@@ -1,0 +1,41 @@
+body {
+    font-family: serif;
+    background-color: #FFF0FF;
+}
+
+.display {
+    font-size: 20px;
+    text-align: center;
+}
+
+#center {
+    position: absolute;
+    margin-top: 50px;
+    text-align: right;
+    float: left;
+    padding-left: 10px;
+    width: 50%;
+}
+
+#title {
+    font-weight: bold;
+}
+
+#done {
+    border-radius: 50%;
+    background-color: red;
+    height: 70px;
+    width: 70px;
+    margin:-10% 100%;
+    text-align: center;
+}
+
+#new {
+    display: block;
+    vertical-align: top;
+    margin:20px auto;
+}
+
+#list {
+    padding-right: -20%;
+}
