@@ -30,7 +30,7 @@ function newGame() {
     //resets list of available letters
     setUpList();
     //resets waldo
-    WALDO = makeStringOf(WORD.length, '_');
+    WALDO = makeStringOf(WORD.length, '_ ');
     document.getElementById("letterGuess").innerHTML = WALDO;
     //resets lives
     LIVES = 5;
@@ -40,7 +40,7 @@ function newGame() {
     //rests count of correct guesses
     CORRECT_LETTERS = 0;
     //resets win/loss message
-    checkLoss(' ', '.', -1);
+    checkLoss();
 }
 
 
@@ -51,7 +51,7 @@ function isLetter(guess) {
             if(guess === WORD[i]) { // if the guessed letter is the same as this index of WORD
 
                 //saves the location of the guess
-                var letterSpot = WORD.indexOf(guess);
+                var letterSpot = WORD.indexOf(guess)*2;
 
                 //stores all of WALDO before where the guess should be
                 var before = WALDO.slice(0, letterSpot);
@@ -137,7 +137,7 @@ function returnLives() { //checks status of lives
     var janitor = "abcdefghijklmnopqrstuvwxyz";
     if (LIVES === 0) { //if the user lost
         //returns a lose message
-        document.getElementById("livesLeft").innerHTML = "Game Over! Click 'start the game' to play again.";
+        document.getElementById("livesLeft").innerHTML = "Game Over! The word was " + WORD + ". Click 'start the game' to play again.";
         //and make ABC into just spaces so they can't keep playing
         for (var i = 0; i < ABC.length; i ++) {
             cleanABC(janitor[i]);
