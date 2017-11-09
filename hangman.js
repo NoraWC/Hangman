@@ -176,7 +176,7 @@ function returnLives() { //checks status of lives
 }
 
 function setUpList() {// pushes the value of ABC to the list the user chooses their guess from
-    var final = "<select id = 'list' title = 'list'>";
+    var final = "<select id = 'list' class = 'list' title = 'list'>";
     for (var i = 0; i < 26; i ++ ) {
         final += "<option value = '" + ABC[i] + "'>" + ABC[i] + "</option>";
     }
