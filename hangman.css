@@ -39,3 +39,9 @@ body {
 #list {
     padding-right: -20%;
 }
+
+#diff_list {
+    padding-right: -20%;
+    position: absolute;
+    margin-top: 70px;
+}
