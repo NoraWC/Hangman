@@ -3,7 +3,9 @@
 * Finished and Uploaded on Thursday, October 26th, 2017
 */
 
-var WORD = "huge"; //the word to be guessed
+var WORD = "huge"; //the word to be guessed; undefined when picked from list
+
+var WORD_LIST = ["huge", "nutmeg", "chefapron"]; //list of words to pick WORD from
 
 var WALDO = ""; //the displayed word, starting as blanks and with letters substituted in as the user plays
 
@@ -24,11 +26,23 @@ function makeStringOf(num, char) {
     return str;
 }
 
+function pickWord() {
+    var arr = ["Easy", "Middle", "Hard"];
+    for (var z = 0; z < 3; z++) {
+        if (arr[z] === document.getElementById('diff_list').value) {
+            WORD = WORD_LIST[z];
+        }
+    }
+}
+
 function newGame() {
     //resets ABC
     ABC = " abcdefghijklmnopqrstuvwxyz";
     //resets list of available letters
     setUpList();
+
+    pickWord();
+    //WORD = WORD_LIST[pickWord()];//undefined
     //resets waldo
     WALDO = makeStringOf(WORD.length, '_ ');
     document.getElementById("letterGuess").innerHTML = WALDO;
@@ -137,7 +151,7 @@ function returnLives() { //checks status of lives
     var janitor = "abcdefghijklmnopqrstuvwxyz";
     if (LIVES === 0) { //if the user lost
         //returns a lose message
-        document.getElementById("livesLeft").innerHTML = "Game Over! The word was " + WORD + ". Click 'start the game' to play again.";
+        document.getElementById("livesLeft").innerHTML = "Game Over! The word was: " + WORD + ". Click 'start the game' to play again.";
         //and make ABC into just spaces so they can't keep playing
         for (var i = 0; i < ABC.length; i ++) {
             cleanABC(janitor[i]);
@@ -149,7 +163,7 @@ function returnLives() { //checks status of lives
         returnLetters();
     } else if (LIVES === -1) { //if the game hasn't officially started yet
         //tell them to start
-        document.getElementById("livesLeft").innerHTML = "Click 'start the game' to play!";
+        document.getElementById("livesLeft").innerHTML = "Choose a difficulty and click 'start the game' to play!";
 
     } else { //if they still have lives left
         //display the number of lives they have left
